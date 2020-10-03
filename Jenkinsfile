@@ -1,8 +1,4 @@
-properties([
-    parameters([
-        choice(choices: ['dev', 'qa', 'prod'], description: 'Choose Environment', name: 'environment')
-    ])
-])
+
 
 def aws_region_var = ''
 
@@ -38,7 +34,7 @@ node {
 
             stage('Packer Build') {
                 sh 'packer build apache.json'
-                ami_id = sh(script: 'packer build apache.json | grep us-east-1 | awk '{print $2}', returnStdout: true)'
+                ami_id = sh(script: 'packer build apache.json | grep us-east-1 | awk '{print $2}' returnStdout: true)'
             }
              
             stage('Create Instance') {
