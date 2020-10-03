@@ -22,7 +22,7 @@ else {
 
 node {
     stage('Pull Repo') {
-        git 'https://github.com/ikambarov/packer.git'
+        git 'https://github.com/maksiess/packer.git'
     }
 
     def ami_name = "apache-${UUID.randomUUID().toString()}"
